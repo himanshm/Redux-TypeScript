@@ -52,3 +52,7 @@ export const cartSlice = createSlice({
     },
   },
 });
+
+/* Now dispatching actions that trigger reducers, is pretty straightforward when using Redux toolkit. You don't have to create custom action types. As we did it earlier with the useReducer function. Instead, Redux toolkit creates those action types and action objects for you. All you have to do to access them with the use of this cartSlice here, and then this actions property. And that will then give you an object which you can de-structure, Where you got one function for every reducer. And it has the same name as your reducer methods. But these functions here will actually not directly invoke these functions. Instead, they will create action objects which can then be sent to Redux. So that Redux then invokes these reducers for you. */
+
+export const { addToCart, removeFromCart } = cartSlice.actions;

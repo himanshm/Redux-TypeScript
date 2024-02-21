@@ -1,3 +1,6 @@
+import { addToCart } from '../store/cart-slice';
+import { useCartDispatch } from '../store/hooks';
+
 type ProductProps = {
   id: string;
   image: string;
@@ -7,12 +10,19 @@ type ProductProps = {
 };
 
 export default function Product({
+  id,
   image,
   title,
   price,
   description,
 }: ProductProps) {
-  function handleAddToCart() {}
+  /* Now, it's actually recommended to not use the useDispatch hook like this though, but to instead create your own version of that hook, for extra type safety. Extra type-safety when working with 'thunks'- action creators that perform some (async) action before the actual action is created and dispatched. */
+
+  const dispatch = useCartDispatch();
+  function handleAddToCart() {
+    // dispatch the action
+    dispatch(addToCart({ id, title, price }));
+  }
 
   return (
     <article className='product'>
