@@ -16,9 +16,12 @@ export default function Header() {
   return (
     <>
       {cartIsVisible && <Cart onClose={handleCloseCartClick} />}
-      <header id="main-header">
-        <div id="main-title">
-          <img src="logo.png" alt="Elegant model" />
+      <header id='main-header'>
+        <div id='main-title'>
+          <img
+            src='logo.png'
+            alt='Elegant model'
+          />
           <h1>Elegant Redux</h1>
         </div>
         <p>

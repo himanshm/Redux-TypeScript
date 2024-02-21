@@ -9,11 +9,14 @@ type CartProps = {
 export default function Cart({ onClose }: CartProps) {
   return createPortal(
     <>
-      <div className="cart-backdrop" />
-      <dialog id="cart-modal" open>
+      <div className='cart-backdrop' />
+      <dialog
+        id='cart-modal'
+        open
+      >
         <h2>Your Cart</h2>
         <CartItems />
-        <p id="cart-actions">
+        <p id='cart-actions'>
           <button onClick={onClose}>Close</button>
         </p>
       </dialog>
