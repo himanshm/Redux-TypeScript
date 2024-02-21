@@ -27,7 +27,28 @@ export const cartSlice = createSlice({
   name: 'cart',
   initialState,
   reducers: {
-    addToCart(state, action: PayloadAction<ActionPayload>) {},
-    removeFromCart() {},
+    addToCart(state, action: PayloadAction<ActionPayload>) {
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload.id
+      );
+
+      if (itemIndex >= 0) {
+        // when using Redux Toolkit, we actually don't have to update the quantity. by returning a new state or anything like that. Instead, we are allowed to directly mutate the state. Something you should not do when using React's useReducer hook, but something you can do when using Redux Toolkit.
+        state.items[itemIndex].quantity++;
+      } else {
+        state.items.push({ ...action.payload, quantity: 1 });
+      }
+    },
+    removeFromCart(state, action: PayloadAction<string>) {
+      const itemIndex = state.items.findIndex(
+        (item) => item.id === action.payload
+      );
+
+      if (state.items[itemIndex].quantity === 1) {
+        state.items.splice(itemIndex, 1);
+      } else {
+        state.items[itemIndex].quantity--;
+      }
+    },
   },
 });
