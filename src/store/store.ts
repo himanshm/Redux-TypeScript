@@ -8,7 +8,8 @@ export const store = configureStore({
   },
 });
 
-/* This type should in the end describe how dispatching will work, or which kind of data will be involved with dispatching in your application.
+/* This type should in the end describe how dispatching will work, or which kind of data will be involved with dispatching in your application.*/
+/* TypeScript has a utility type which we can use to get hold of the return value of a function, so that when we have a function type, as it's the case here, we can extract a part of that function type and store that in a new type. And here it's the return value of the function type which we want to store in a new type..*/
 
- */
-type AppDispatch = typeof store.dispatch;
+export type RootState = ReturnType<typeof store.getState>;
+export type AppDispatch = typeof store.dispatch;
